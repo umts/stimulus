@@ -11,10 +11,20 @@ export default defineConfig({
     restriction: "error",
   },
   rules: {
+    "eslint/no-undefined": "off",
     "import/no-default-export": "off",
     "import/no-relative-parent-imports": "off",
     "import/no-unassigned-import": "off",
     "oxc/no-async-await": "off",
     "oxc/no-optional-chaining": "off",
   },
+  overrides: [
+    {
+      files: ["*.test.ts"],
+      rules: {
+        "max-lines-per-function": "off",
+        "vitest/require-test-timeout": "off",
+      },
+    },
+  ],
 });
