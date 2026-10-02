@@ -1,0 +1,56 @@
+{
+  "name": "@umts/stimulus",
+  "version": "0.0.0-dev",
+  "description": "Stimulus controllers for UMTS rails apps.",
+  "repository": {
+    "url": "https://github.com/umts/stimulus"
+  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "type": "module",
+  "exports": {
+    "./*.js": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "docs": "vitepress dev docs",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "*",
+    "@types/node": "*",
+    "@typescript/typescript6": "*",
+    "@vitest/browser-playwright": "*",
+    "@vitest/coverage-istanbul": "*",
+    "@vitest/ui": "*",
+    "bootstrap": "*",
+    "conventional-changelog-conventionalcommits": "< 10",
+    "oxfmt": "*",
+    "oxlint": "*",
+    "playwright": "*",
+    "sass": "*",
+    "semantic-release": "*",
+    "typescript": "*",
+    "unplugin-dts": "*",
+    "vite": "*",
+    "vitepress": "2.0.0-alpha.20",
+    "vitest": "*"
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "3.*"
+  },
+  "allowScripts": {
+    "@parcel/watcher": true,
+    "fsevents": true
+  }
+}

@@ -1,0 +1,6 @@
+/.vitest/
+/coverage/
+/docs/.vitepress/cache/
+/docs/.vitepress/dist/
+/dist/
+/node_modules/
