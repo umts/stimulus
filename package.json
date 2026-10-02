@@ -12,7 +12,7 @@
   ],
   "type": "module",
   "exports": {
-    "./*.js": {
+    "./*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/*.js"
     }
