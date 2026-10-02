@@ -14,20 +14,26 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "docs": "vitepress dev docs"
+    "docs": "vitepress dev docs",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "*",
     "@types/node": "*",
     "@typescript/typescript6": "*",
+    "@vitest/browser-playwright": "*",
+    "@vitest/coverage-istanbul": "*",
+    "@vitest/ui": "*",
     "bootstrap": "*",
     "oxfmt": "*",
     "oxlint": "*",
+    "playwright": "*",
     "sass": "*",
     "typescript": "*",
     "unplugin-dts": "*",
     "vite": "*",
-    "vitepress": "2.0.0-alpha.20"
+    "vitepress": "2.0.0-alpha.20",
+    "vitest": "*"
   },
   "peerDependencies": {
     "@hotwired/stimulus": "3.*"
