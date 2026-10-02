@@ -1,3 +1,2 @@
-$color-mode-type: media-query;
-
-@import "pkg:bootstrap";
+@use "pkg:@umts/brand/bootstrap";
+@use "pkg:@umts/brand/tom-select";
