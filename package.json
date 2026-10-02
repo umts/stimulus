@@ -1,14 +1,19 @@
 {
   "name": "stimulus",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "oxfmt": "*",
+    "oxlint": "*",
     "typescript": "*",
     "vite": "*"
   },
