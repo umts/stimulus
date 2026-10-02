@@ -3,7 +3,7 @@ import { readdirSync } from "node:fs";
 import path from "node:path";
 import { NodePackageImporter } from "sass";
 import dts from "unplugin-dts/vite";
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from "vitest/config";
 import pkg from "./package.json" with { type: "json" };
 
 const lib = path.resolve(import.meta.dirname, "lib");

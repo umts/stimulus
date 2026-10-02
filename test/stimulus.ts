@@ -1,5 +1,5 @@
 import { Application, type ControllerConstructor } from "@hotwired/stimulus";
-import {type Locator, page} from "vitest/browser";
+import { type Locator, page } from "vitest/browser";
 
 let application: Application | null = null;
 let root: HTMLElement | null = null;

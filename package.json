@@ -1,6 +1,15 @@
 {
   "name": "@umts/stimulus",
   "version": "0.0.0-dev",
+  "description": "Stimulus controllers for UMTS rails apps.",
+  "repository": {
+    "url": "https://github.com/umts/stimulus"
+  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
   "type": "module",
   "exports": {
     "./*.js": {
@@ -25,10 +34,12 @@
     "@vitest/coverage-istanbul": "*",
     "@vitest/ui": "*",
     "bootstrap": "*",
+    "conventional-changelog-conventionalcommits": "< 10",
     "oxfmt": "*",
     "oxlint": "*",
     "playwright": "*",
     "sass": "*",
+    "semantic-release": "*",
     "typescript": "*",
     "unplugin-dts": "*",
     "vite": "*",
