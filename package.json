@@ -14,7 +14,7 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "docs": "vitepress dev docs"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "*",
@@ -26,12 +26,14 @@
     "sass": "*",
     "typescript": "*",
     "unplugin-dts": "*",
-    "vite": "*"
+    "vite": "*",
+    "vitepress": "2.0.0-alpha.20"
   },
   "peerDependencies": {
     "@hotwired/stimulus": "3.*"
   },
   "allowScripts": {
+    "@parcel/watcher": true,
     "fsevents": true
   }
 }
