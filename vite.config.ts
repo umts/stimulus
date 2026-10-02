@@ -1,14 +1,35 @@
+import { readdirSync } from "node:fs";
 import path from "node:path";
+import { NodePackageImporter } from "sass";
 import dts from "unplugin-dts/vite";
 import { defineConfig } from "vite";
+import pkg from "./package.json" with { type: "json" };
+
+const lib = path.resolve(import.meta.dirname, "lib");
 
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(import.meta.dirname, "lib/index.ts"),
-      fileName: "index",
+      entry: readdirSync(lib, { recursive: true }).map((f) => path.join(lib, f.toString())),
       formats: ["es"],
     },
+    rolldownOptions: {
+      external: Object.keys(pkg.peerDependencies ?? {}),
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: lib,
+        entryFileNames: "[name].js",
+      },
+    },
   },
-  plugins: [dts({ bundleTypes: true, tsconfigPath: "tsconfig.lib.json" })],
+  plugins: [dts({ tsconfigPath: "tsconfig.lib.json" })],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        importers: [new NodePackageImporter()],
+        quietDeps: true,
+        silenceDeprecations: ["import", "legacy-js-api"],
+      },
+    },
+  },
 });
