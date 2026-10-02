@@ -1,8 +1,15 @@
 {
-  "name": "stimulus",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@umts/stimulus",
+  "version": "0.0.0-dev",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,9 +19,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "*",
+    "@types/node": "*",
+    "@typescript/typescript6": "*",
     "oxfmt": "*",
     "oxlint": "*",
     "typescript": "*",
+    "unplugin-dts": "*",
     "vite": "*"
   },
   "allowScripts": {
