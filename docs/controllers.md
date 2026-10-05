@@ -13,8 +13,8 @@ Initialize tom-selects automatically.
 = f.select :my_select, ..., multiple: true, data: { controller: 'tom-select' }
 
 -# add search bars
-= f.select :my_select, ..., data: { controller: 'tom-select', search: true }
+= f.select :my_select, ..., data: { controller: 'tom-select', 'tom-select-search': true }
 
 -# limit rendered options (only when search is enabled)
-= f.select :my_select, ..., data: { controller: 'tom-select', search: true, truncate: true }
+= f.select :my_select, ..., data: { controller: 'tom-select', 'tom-select-search': true, 'tom-select-truncate': true }
 ```

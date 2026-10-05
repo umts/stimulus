@@ -33,14 +33,14 @@ export default class TomSelectController extends Controller {
     if (this.select.multiple) {
       plugins.push("clear_button");
     }
-    if ("search" in this.select.dataset) {
-      plugins.push("dropdown_input");
-      if (!("truncate" in this.select.dataset)) {
-        options.maxOptions = null;
-      }
-    } else {
+    if (this.select.getAttribute(`data-${this.identifier}-search`) === null) {
       options.controlInput = null;
       options.maxOptions = null;
+    } else {
+      plugins.push("dropdown_input");
+      if (this.select.getAttribute(`data-${this.identifier}-truncate`) === null) {
+        options.maxOptions = null;
+      }
     }
     options.plugins = plugins;
     return options;

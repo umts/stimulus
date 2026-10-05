@@ -39,7 +39,7 @@ describe("TomSelectController", () => {
   describe("connecting a searchable select", () => {
     it("initializes a tom select with the correct options", async () => {
       render(`
-        <select data-controller="tom-select" data-search>
+        <select data-controller="tom-select" data-tom-select-search>
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -60,7 +60,7 @@ describe("TomSelectController", () => {
   describe("connecting a truncated searchable basic select", () => {
     it("initializes a tom select with the correct options", async () => {
       render(`
-        <select data-controller="tom-select" data-search data-truncate>
+        <select data-controller="tom-select" data-tom-select-search data-tom-select-truncate>
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -102,7 +102,7 @@ describe("TomSelectController", () => {
   describe("connecting a searchable select", () => {
     it("initializes a tom select with the correct options", async () => {
       render(`
-        <select multiple data-controller="tom-select" data-search>
+        <select multiple data-controller="tom-select" data-tom-select-search>
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -123,7 +123,7 @@ describe("TomSelectController", () => {
   describe("connecting a truncated searchable basic select", () => {
     it("initializes a tom select with the correct options", async () => {
       render(`
-        <select multiple data-controller="tom-select" data-search data-truncate>
+        <select multiple data-controller="tom-select" data-tom-select-search data-tom-select-truncate>
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -175,7 +175,7 @@ describe("TomSelectController", () => {
   describe("disconnecting a select", () => {
     it("destroys the tom select", async () => {
       const page = render(`
-        <select multiple data-controller="tom-select" data-search data-truncate>
+        <select multiple data-controller="tom-select" data-tom-select-search data-tom-select-truncate>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
