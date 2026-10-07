@@ -11,12 +11,12 @@
       <h1>UMTS Stimulus</h1>
       <hr />
       <div class="card">
-        <div class="card-header">TomSelectController</div>
+        <div class="card-header">TomSelect</div>
         <div class="card-body">
           <div class="mb-3">
             <label for="basic-select" class="form-label">Basic select</label>
             <select id="basic-select" class="form-select" data-controller="tom-select">
-              <option value="0"></option>
+              <option></option>
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
               <option value="3">Option 3</option>
@@ -25,9 +25,30 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="search-select" class="form-label">Basic select</label>
-            <select id="search-select" class="form-select" data-controller="tom-select" data-tom-select-search>
-              <option value="0"></option>
+            <label for="search-select" class="form-label">Search select</label>
+            <select
+              id="search-select"
+              class="form-select"
+              data-controller="tom-select"
+              data-tom-select-search
+            >
+              <option></option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="multi-select" class="form-label">Multi select</label>
+            <select
+              multiple
+              id="multi-select"
+              class="form-select"
+              data-controller="tom-select"
+              data-tom-select-search
+            >
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
               <option value="3">Option 3</option>
@@ -36,20 +57,16 @@
             </select>
           </div>
           <div>
-            <label for="multi-select" class="form-label">Basic select</label>
+            <label for="remote-select" class="form-label">Remote select</label>
             <select
-              multiple
-              id="multi-select"
+              id="remote-select"
               class="form-select"
               data-controller="tom-select"
               data-tom-select-search
+              data-tom-select-remote="/items.json"
             >
-              <option value="0"></option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-              <option value="5">Option 5</option>
+              <option selected></option>
+              <option value="0">Option 0</option>
             </select>
           </div>
         </div>
