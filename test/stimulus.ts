@@ -14,9 +14,10 @@ export function register(name: string, controller: ControllerConstructor): void 
 
 export function render(html: string): Locator {
   root = document.createElement("div");
+  root.dataset.testid = "stimulus-root";
   root.innerHTML = html;
   document.body.append(root);
-  return page.elementLocator(root);
+  return page.getByTestId("stimulus-root");
 }
 
 export function stop(): void {

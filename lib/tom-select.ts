@@ -72,7 +72,7 @@ export default class TomSelectController extends Controller {
     const tomSelect = this.tomSelect!;
     tomSelect.order = Math.max(
       tomSelect.order,
-      ...Object.values(tomSelect.options).map((option: TomOption) => Number(option.$order) || 0),
+      ...Object.values(tomSelect.options).map((option: TomOption) => Number(option.$order)),
     );
   }
 }
