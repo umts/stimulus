@@ -51,9 +51,13 @@
   },
   "peerDependencies": {
     "@hotwired/stimulus": "3.*",
+    "bootstrap": "5.*",
     "tom-select": "2.*"
   },
   "peerDependenciesMeta": {
+    "bootstrap": {
+      "optional": true
+    },
     "tom-select": {
       "optional": true
     }
