@@ -10,16 +10,13 @@ export default class ClipboardController extends Controller {
     this.reset();
   }
 
-  public copy(): void {
-    navigator.clipboard
-      .writeText(this.sourceTarget.innerText)
-      .then(() => {
-        this.indicate("fa-fw fa-solid fa-check", "Copied");
-        return null;
-      })
-      .catch(() => {
-        this.indicate("fa-fw fa-solid fa-xmark", "Failed");
-      });
+  public async copy(): Promise<void> {
+    try {
+      await navigator.clipboard.writeText(this.sourceTarget.innerText);
+      this.indicate("fa-fw fa-solid fa-check", "Copied");
+    } catch {
+      this.indicate("fa-fw fa-solid fa-xmark", "Failed");
+    }
   }
 
   public reset(): void {
