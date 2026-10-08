@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "*",
+    "@types/bootstrap": "*",
     "@types/node": "*",
     "@typescript/typescript6": "*",
     "@umts/brand": "github:umts/brand#main",
