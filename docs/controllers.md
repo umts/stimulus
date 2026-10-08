@@ -2,9 +2,24 @@
 
 Library controllers will need the respective dependencies installed (not bundled with this library).
 
+## clipboard
+
+Copies content to the system clipboard. Accepts an optional indicator target that controls a status icon
+(requires fontawesome).
+
+```haml
+.input-group{ 'data-controller': 'clipboard' }
+  .form-control{ 'data-clipboard-target': content }
+  = button_tag type: :button,
+               class: 'btn btn-neutral',
+               'data-action': 'click->clipboard#copy blur->clipboard#reset mouseleave->clipboard#reset' do
+    %i{ 'data-clipboard-target': 'indicator' }
+    Copy
+```
+
 ## popover
 
-Initialize bootstrap popovers automatically. Pass options via bootstrap data attribute normally.
+Initializes bootstrap popovers automatically. Pass options via bootstrap data attribute normally.
 
 ```haml
 = button_tag 'Popover', type: :button, data: { controller: 'popover', 'bs-title': 'Title', 'bs-content': 'content' }
@@ -12,7 +27,7 @@ Initialize bootstrap popovers automatically. Pass options via bootstrap data att
 
 ## tom-select
 
-Initialize tom-selects automatically. Multi-selects will have a master clear button added automatically.
+Initializes tom-selects automatically. Multi-selects will have a master clear button added automatically.
 
 ```haml
 = f.select :my_select, ..., data: { controller: 'tom-select' }
