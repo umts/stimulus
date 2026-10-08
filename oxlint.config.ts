@@ -17,6 +17,7 @@ export default defineConfig({
     "import/no-unassigned-import": "off",
     "oxc/no-async-await": "off",
     "oxc/no-optional-chaining": "off",
+    "typescript/no-non-null-assertion": "off",
   },
   overrides: [
     {
