@@ -10,6 +10,7 @@ const lib = path.resolve(import.meta.dirname, "lib");
 
 export default defineConfig({
   build: {
+    copyPublicDir: false,
     lib: {
       entry: readdirSync(lib, { recursive: true }).map((f) => path.join(lib, f.toString())),
       formats: ["es"],

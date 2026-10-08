@@ -1,21 +1,7 @@
 import "tom-select/dist/css/tom-select.css";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Locator } from "vitest/browser";
-import { register, render } from "./stimulus.ts";
+import { register, connect } from "./stimulus.ts";
 import TomSelectController from "../lib/tom-select.ts";
-
-async function initialized(root: Locator): Promise<{ combobox: Locator; dropdown: Locator }> {
-  const initialCombobox = root.getByRole("combobox", { expanded: false });
-  await expect.element(initialCombobox).toBeVisible();
-
-  initialCombobox.element().dataset.testid = "select";
-  const combobox = root.getByTestId("select");
-
-  (initialCombobox.element()!.ariaControlsElements![0] as HTMLElement).dataset.testid = "dropdown";
-  const dropdown = root.getByTestId("dropdown");
-
-  return { combobox, dropdown };
-}
 
 describe("TomSelectController", () => {
   beforeEach(() => {
@@ -24,43 +10,44 @@ describe("TomSelectController", () => {
 
   describe("with a basic select", () => {
     it("initializes a tom select", async () => {
-      const page = render(`
-        <select data-controller="tom-select">
+      const page = await connect(`
+        <select aria-hidden="true" data-controller="tom-select">
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
-      `);
-      await initialized(page);
+     `);
+      await page.getByRole("combobox").click();
+      await expect.element(page.getByRole("option", { name: "One" })).toBeVisible();
     });
   });
 
   describe("with a multi select", () => {
-    it("initializes a tom select with a clear button", async () => {
-      const page = render(`
-        <select multiple data-controller="tom-select">
+    it("initializes a tom select with the clear button plugin", async () => {
+      const page = await connect(`
+        <select multiple aria-hidden="true" data-controller="tom-select">
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
       `);
-      const { combobox, dropdown } = await initialized(page);
-      await combobox.click();
-      await dropdown.getByText("One").click();
-      await expect.element(combobox.getByTitle("Clear All")).toBeVisible();
+      await page.getByRole("combobox").click();
+      await page.getByRole("option", { name: "One" }).click();
+      await expect
+        .element(page.getByRole("button").and(page.getByTitle("Clear All")))
+        .toBeVisible();
     });
   });
 
   describe("with a searchable select", () => {
-    it("initializes a tom select with a search bar", async () => {
-      const page = render(`
-        <select data-controller="tom-select" data-tom-select-search data-tom-select-truncate>
+    it("initializes a tom select with the dropdown input plugin", async () => {
+      const page = await connect(`
+        <select aria-hidden="true" data-controller="tom-select" data-tom-select-search data-tom-select-truncate>
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
       `);
-      const { combobox } = await initialized(page);
-      await combobox.click();
+      await page.getByRole("combobox").click();
       await expect.element(page.getByRole("textbox")).toBeVisible();
     });
   });
@@ -88,48 +75,47 @@ describe("TomSelectController", () => {
       vi.unstubAllGlobals();
     });
 
-    it("initializes a tom select with remote options", async () => {
-      const page = render(`
-        <select data-controller="tom-select" data-tom-select-remote="/options">
+    it("initializes a tom select with remote options preloaded", async () => {
+      const page = await connect(`
+        <select aria-hidden="true" data-controller="tom-select" data-tom-select-remote="/options">
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
       `);
-      const { combobox, dropdown } = await initialized(page);
-      await combobox.click();
-      await expect.element(dropdown.getByText("Remote option")).toBeVisible();
+      await page.getByRole("combobox").click();
+      await expect.element(page.getByRole("option", { name: "Remote option" })).toBeVisible();
     });
 
-    it("does not panic when remote does not respond successfully", async () => {
-      const page = render(`
-        <select data-controller="tom-select" data-tom-select-remote="/not-an-endpoint">
+    it("does not panic when remote options fail to load", async () => {
+      const page = await connect(`
+        <select aria-hidden="true" data-controller="tom-select" data-tom-select-remote="/not-an-endpoint">
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
-        </select>
+        </selectv>
       `);
-      const { combobox, dropdown } = await initialized(page);
-      await combobox.click();
+      await page.getByRole("combobox").click();
       await vi.waitFor(() => {
         expect(fetchMock).toHaveBeenCalled();
       });
-      await expect.element(dropdown.getByText("One")).toBeVisible();
+      await expect.element(page.getByRole("option", { name: "One" })).toBeVisible();
     });
   });
 
-  describe("removing a select from the DOM", () => {
+  describe("after disconnection", () => {
     it("destroys the tom-select", async () => {
-      const page = render(`
-        <select data-controller="tom-select">
+      const page = await connect(`
+        <select aria-hidden="true" data-controller="tom-select" data-testid="controller">
           <option value="0"></option>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
       `);
-      const { combobox } = await initialized(page);
-      page.element().remove();
-      await expect.element(combobox).not.toBeInTheDocument();
+      await page.getByRole("combobox").click();
+      page.getByTestId("controller").element().remove();
+      await expect.element(page.getByRole("combobox")).not.toBeInTheDocument();
+      await expect.element(page.getByRole("listbox")).not.toBeInTheDocument();
     });
   });
 });

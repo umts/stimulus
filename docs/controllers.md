@@ -2,6 +2,14 @@
 
 Library controllers will need the respective dependencies installed (not bundled with this library).
 
+## popover
+
+Initialize bootstrap popovers automatically. Pass options via bootstrap data attribute normally.
+
+```haml
+= button_tag 'Popover', type: :button, data: { controller: 'popover', 'bs-title': 'Title', 'bs-content': 'content' }
+```
+
 ## tom-select
 
 Initialize tom-selects automatically. Multi-selects will have a master clear button added automatically.
