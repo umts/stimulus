@@ -11,6 +11,22 @@
       <h1>UMTS Stimulus</h1>
       <hr />
       <div class="card mb-3">
+        <div class="card-header">Clipboard</div>
+        <div class="card-body">
+          <div class="input-group" data-controller="clipboard">
+            <div class="form-control" data-clipboard-target="source">Content</div>
+            <button
+              type="button"
+              class="btn btn-neutral"
+              data-action="click->clipboard#copy mouseleave->clipboard#reset blur->clipboard#reset"
+            >
+              <i data-clipboard-target="indicator"></i>
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
         <div class="card-header">Popover</div>
         <div class="card-body">
           <div class="d-grid">

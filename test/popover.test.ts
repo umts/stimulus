@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { register, connect } from "./stimulus.ts";
 import PopoverController from "../lib/popover.ts";
 
-describe("TomSelectController", () => {
+describe("PopoverController", () => {
   beforeEach(() => {
     register("popover", PopoverController);
   });

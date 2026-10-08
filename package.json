@@ -28,6 +28,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "*",
     "@microsoft/api-extractor": "*",
     "@types/bootstrap": "*",
     "@types/node": "*",
@@ -51,11 +52,15 @@
     "vitest": "*"
   },
   "peerDependencies": {
+    "@fortawesome/fontawesome-free": "7.*",
     "@hotwired/stimulus": "3.*",
     "bootstrap": "5.*",
     "tom-select": "2.*"
   },
   "peerDependenciesMeta": {
+    "@fortawesome/fontawesome-free": {
+      "optional": true
+    },
     "bootstrap": {
       "optional": true
     },

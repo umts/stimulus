@@ -36,6 +36,7 @@ export default defineConfig({
   },
   test: {
     setupFiles: ["./test/setup.ts"],
+    restoreMocks: true,
     browser: {
       enabled: true,
       provider: playwright(),
