@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { page } from "vitest/browser";
 import { register, connect } from "./stimulus.ts";
 import ClipboardController from "../lib/clipboard.ts";
 
@@ -19,7 +18,7 @@ describe("ClipboardController", () => {
     });
 
     it("writes to the system clipboard", async () => {
-      await connect(`
+      const page = await connect(`
         <div data-controller="clipboard">
           <div data-clipboard-target="source">Content</div>
           <button type="button" data-action="click->clipboard#copy">
@@ -33,7 +32,7 @@ describe("ClipboardController", () => {
     });
 
     it("indicates success", async () => {
-      await connect(`
+      const page = await connect(`
         <div data-controller="clipboard">
           <div data-clipboard-target="source">Content</div>
           <button type="button" data-action="click->clipboard#copy">
@@ -61,7 +60,7 @@ describe("ClipboardController", () => {
     });
 
     it("indicates failure", async () => {
-      await connect(`
+      const page = await connect(`
         <div data-controller="clipboard">
           <div data-clipboard-target="source">Content</div>
           <button type="button" data-action="click->clipboard#copy">
@@ -84,7 +83,7 @@ describe("ClipboardController", () => {
     });
 
     it("clears all indicator content", async () => {
-      await connect(`
+      const page = await connect(`
         <div data-controller="clipboard">
           <div data-clipboard-target="source">Content</div>
           <button type="button" data-action="click->clipboard#copy">

@@ -25,6 +25,19 @@ Initializes bootstrap popovers automatically. Pass options via bootstrap data at
 = button_tag 'Popover', type: :button, data: { controller: 'popover', 'bs-title': 'Title', 'bs-content': 'content' }
 ```
 
+## template
+
+Creates and appends content from a template. Will do a global substitution of the substring `INDEX` with `Date.now()`
+before appending (useful for rails nested attribute indices).
+
+```haml
+%div{ 'data-controller': 'template' }
+  %template{ 'data-template-target': 'source' }
+    %li Item INDEX
+  = button_tag 'Add item', type: :button, 'data-action': 'template#append'
+  %ul{ 'data-template-target': 'append' }
+```
+
 ## tom-select
 
 Initializes tom-selects automatically. Multi-selects will have a master clear button added automatically.

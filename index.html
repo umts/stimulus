@@ -43,6 +43,27 @@
         </div>
       </div>
       <div class="card mb-3">
+        <div class="card-header">Template</div>
+        <div
+          class="list-group list-group-flush"
+          data-controller="template"
+          data-template-target="append"
+        >
+          <template data-template-target="source">
+            <div class="list-group-item">Item INDEX</div>
+          </template>
+          <div class="list-group-item">
+            <div class="float-end">
+              <button type="button" class="nav-link" data-action="template#append">
+                <i class="fa-solid fa-plus"></i>
+                Append
+              </button>
+            </div>
+            Item 1
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
         <div class="card-header">TomSelect</div>
         <div class="card-body">
           <div class="mb-3">
