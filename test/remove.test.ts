@@ -8,11 +8,11 @@ describe("RemoveController", () => {
   beforeEach(() => {
     register("remove", RemoveController);
     eventSpy = vi.fn();
-    document.addEventListener('remove:removed', eventSpy);
+    document.addEventListener("remove:removed", eventSpy);
   });
 
   afterEach(() => {
-    document.removeEventListener('remove:removed', eventSpy);
+    document.removeEventListener("remove:removed", eventSpy);
   });
 
   it("removes content from the DOM", async () => {
@@ -22,7 +22,7 @@ describe("RemoveController", () => {
         <button type="button" data-action="click->remove#remove">Remove</button>
       </div>
     `);
-    await page.getByRole("button", { name: 'Remove' }).click();
+    await page.getByRole("button", { name: "Remove" }).click();
     await expect.element(page.getByText("Content")).not.toBeInTheDocument();
     expect(eventSpy).toHaveBeenCalled();
   });
