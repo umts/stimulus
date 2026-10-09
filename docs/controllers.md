@@ -25,6 +25,17 @@ Initializes bootstrap popovers automatically. Pass options via bootstrap data at
 = button_tag 'Popover', type: :button, data: { controller: 'popover', 'bs-title': 'Title', 'bs-content': 'content' }
 ```
 
+## remove
+
+Removes content from the DOM. Will bubble a custom event (`remove:removed`) on the parent element if present when
+triggered.
+
+```haml
+%div{ 'data-controller': 'remove' }
+  This will be removed when you click
+  = button_tag 'Remove', type: :button, 'data-action': 'remove#remove'
+```
+
 ## template
 
 Creates and appends content from a template. Will do a global substitution of the substring `INDEX` with `Date.now()`

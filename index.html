@@ -43,14 +43,22 @@
         </div>
       </div>
       <div class="card mb-3">
-        <div class="card-header">Template</div>
+        <div class="card-header">Remove / Template</div>
         <div
           class="list-group list-group-flush"
           data-controller="template"
           data-template-target="append"
         >
           <template data-template-target="source">
-            <div class="list-group-item">Item INDEX</div>
+            <div class="list-group-item" data-controller="remove">
+              <div class="float-end">
+                <button type="button" class="nav-link" data-action="remove#remove">
+                  <i class="fa-solid fa-xmark"></i>
+                  Remove
+                </button>
+              </div>
+              Item INDEX
+            </div>
           </template>
           <div class="list-group-item">
             <div class="float-end">
