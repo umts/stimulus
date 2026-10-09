@@ -1,7 +1,7 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from "@hotwired/stimulus";
 
 export default class TemplateController extends Controller {
-  public static targets = ['source', 'append'];
+  public static targets = ["source", "append"];
 
   declare public readonly sourceTarget: HTMLTemplateElement;
   declare public readonly appendTarget: HTMLElement;

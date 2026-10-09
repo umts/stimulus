@@ -1,4 +1,4 @@
-import {beforeEach, describe, expect, it, vi} from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { register, connect } from "./stimulus.ts";
 import TemplateController from "../lib/template.ts";
 
@@ -26,10 +26,16 @@ describe("TemplateController", () => {
         <button type="button" data-action="click->template#append">Append</button>
       </div>
     `);
-    await expect.element(page.getByRole('button', { name: 'Button INDEX' })).not.toBeInTheDocument();
-    await page.getByRole('button', { name: 'Append' }).click();
-    await expect.element(page.getByRole('button', { name: 'Button 1' }).and(page.getByTitle('Title 1'))).toBeVisible();
-    await page.getByRole('button', { name: 'Append' }).click();
-    await expect.element(page.getByRole('button', { name: 'Button 2' }).and(page.getByTitle('Title 2'))).toBeVisible();
+    await expect
+      .element(page.getByRole("button", { name: "Button INDEX" }))
+      .not.toBeInTheDocument();
+    await page.getByRole("button", { name: "Append" }).click();
+    await expect
+      .element(page.getByRole("button", { name: "Button 1" }).and(page.getByTitle("Title 1")))
+      .toBeVisible();
+    await page.getByRole("button", { name: "Append" }).click();
+    await expect
+      .element(page.getByRole("button", { name: "Button 2" }).and(page.getByTitle("Title 2")))
+      .toBeVisible();
   });
 });
